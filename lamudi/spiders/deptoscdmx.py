@@ -26,6 +26,7 @@ class DeptoscdmxSpider(CrawlSpider):
     def parse_item(self, response):
        yield{
            'title': response.xpath("//div[@class='Header-title-block small-12 columns']/h1/text()").get(),
+           'price': response.xpath("//span[@class='Overview-main FirstPrice']/text()").get(),
            'address': response.xpath("normalize-space(//span[@class='Header-title-address-text']/text())").get(),
            'car_boxes': response.xpath("normalize-space((//div[@class='columns-2']/div[@data-attr-name='car_spaces']/following-sibling::node())[2]/text())").get(),
            'rooms': response.xpath("normalize-space((//div[@class='columns-2']/div[@data-attr-name='bedrooms']/following-sibling::node())[2]/text())").get(),
